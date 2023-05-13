@@ -1,8 +1,9 @@
 from hashlib import sha256
 import time
+PUBLIC_ADDRESS = "bc1qu7ef0wd7yanlpjegjlwpdwrn3twrq7lkl4rtju"
 NONCE_LIMIT =100000000
 block_height =0
-difficulty = 6
+difficulty = 5
 tx = sha256(b"transactions_are_here").hexdigest()
 last_block = sha256(b"Last_block").hexdigest()
 def mine(block_height, last_block, tx,difficulty):
@@ -12,7 +13,8 @@ def mine(block_height, last_block, tx,difficulty):
         calc_digest = sha256(base.encode()).hexdigest()
         if calc_digest.startswith("0"*difficulty):
             print(f"Block mined: {calc_digest} \nNonce is: {nonce}")
-            print(f"Time taken: {time.time()-start_time} seconds")
+            print(f"50 BTC mined by: {PUBLIC_ADDRESS}")
+            print(f"Time taken: {int(time.time()-start_time)} seconds")
             return nonce
 mine(block_height, last_block, tx, difficulty)
 
